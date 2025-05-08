@@ -1,0 +1,34 @@
+<div class="container">
+    <h2 class="title">Gestion des Entrepôts</h2>
+  
+    <form (ngSubmit)="save()" class="form">
+      <input [(ngModel)]="entrepot.nom" name="nom" placeholder="Nom" required />
+      <input [(ngModel)]="entrepot.adresse" name="adresse" placeholder="Adresse" required />
+      <input type="number" [(ngModel)]="entrepot.capacite" name="capacite" placeholder="Capacité" required />
+  
+      <button type="submit">{{ editMode ? 'Modifier' : 'Ajouter' }}</button>
+      <button type="button" (click)="resetForm()" *ngIf="editMode">Annuler</button>
+    </form>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th><th>Nom</th><th>Adresse</th><th>Capacité</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of entrepots">
+          <td>{{ e.id }}</td>
+          <td>{{ e.nom }}</td>
+          <td>{{ e.adresse }}</td>
+          <td>{{ e.capacite }}</td>
+          <td>
+            <button (click)="edit(e)">✏️</button>
+            <button (click)="remove(e)">🗑️</button>
+           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

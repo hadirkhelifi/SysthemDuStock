@@ -1,0 +1,53 @@
+<div class="container">
+    <h2>Mouvements de Stock</h2>
+  
+    <form class="form" (ngSubmit)="save()">
+      <label for="produit">Produit :</label>
+      <select id="produit" [(ngModel)]="mouvement.produit" name="produit" required>
+        <option *ngFor="let p of produits" [ngValue]="p">{{ p.nom }}</option>
+      </select>
+  
+      <label for="entrepot">Entrepôt :</label>
+      <select id="entrepot" [(ngModel)]="mouvement.entrepot" name="entrepot" required>
+        <option *ngFor="let e of entrepots" [ngValue]="e">{{ e.nom }}</option>
+      </select>
+  
+      <label for="type">Type :</label>
+      <select id="type" [(ngModel)]="mouvement.type" name="type" required>
+        <option value="entrée">Entrée</option>
+        <option value="sortie">Sortie</option>
+      </select>
+  
+      <label for="quantite">Quantité :</label>
+      <input id="quantite" type="number" [(ngModel)]="mouvement.quantite" name="quantite" placeholder="Quantité" required />
+  
+      <label for="date">Date :</label>
+      <input id="date" type="date" [(ngModel)]="mouvement.date" name="date" required />
+  
+      <button type="submit">{{ editMode ? 'Modifier' : 'Ajouter' }}</button>
+      <button type="button" (click)="resetForm()" *ngIf="editMode">Annuler</button>
+    </form>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th><th>Produit</th><th>Type</th><th>Quantité</th><th>Date</th><th>Entrepôt</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of mouvements">
+          <td>{{ m.id }}</td>
+          <td>{{ m.produit.nom }}</td>
+          <td>{{ m.type }}</td>
+          <td>{{ m.quantite }}</td>
+          <td>{{ m.date }}</td>
+          <td>{{ m.entrepot.nom }}</td>
+          <td>
+            <button (click)="edit(m)">✏️</button>
+            <button (click)="remove(m)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,36 @@
+<div class="container">
+    <h2 class="title">Gestion des Produits</h2>
+  
+    <form (ngSubmit)="save()" class="form">
+      <input [(ngModel)]="produit.nom" name="nom" placeholder="Nom" required />
+      <input [(ngModel)]="produit.categorie" name="categorie" placeholder="Catégorie" required />
+      <input type="number" [(ngModel)]="produit.prix" name="prix" placeholder="Prix" required />
+      <input [(ngModel)]="produit.fournisseur" name="fournisseur" placeholder="Fournisseur" required />
+      <input type="number" [(ngModel)]="produit.seuilMin" name="seuil_min" placeholder="Seuil minimum" required />
+  
+      <button type="submit">{{ editMode ? 'Modifier' : 'Ajouter' }}</button>
+      <button type="button" (click)="resetForm()" *ngIf="editMode">Annuler</button>
+    </form>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nom</th><th>Catégorie</th><th>Prix</th><th>Fournisseur</th><th>Seuil Min</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of produits">
+          <td>{{ p.nom }}</td>
+          <td>{{ p.categorie }}</td>
+          <td>{{ p.prix }}</td>
+          <td>{{ p.fournisseur }}</td>
+          <td>{{ p.seuilMin }}</td>
+          <td>
+            <button (click)="edit(p)">✏️</button>
+            <button (click)="remove(p)">🗑️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

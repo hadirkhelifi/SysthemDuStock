@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Liste des Stocks</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Entrepôt</th>
+        <th>Quantité</th>
+        <th>Seuil d'Alerte</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of stocks" [ngClass]="{'alerte': isStockBas(s)}">
+        <td>{{ s.produit.nom }}</td>
+        <td>{{ s.entrepot.nom }}</td>
+        <td>{{ s.quantite }}</td>
+        <td>{{ s.seuilAlerte }}</td>
+        <td>
+          <span *ngIf="isStockBas(s)" style="color: red; font-weight: bold;">
+            ⚠️ Stock bas
+          </span>
+          <span *ngIf="!isStockBas(s)" style="color: green;">
+            ✅ OK
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
