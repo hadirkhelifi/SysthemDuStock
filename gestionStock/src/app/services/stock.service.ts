@@ -26,4 +26,8 @@ export class StockService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`);
   }
+
+  envoyerAlerte(stockId: number): Observable<string> {
+  return this.http.post(`${this.url}/${stockId}/alerte`, null, { responseType: 'text' });
+}
 }

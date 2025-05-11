@@ -1,0 +1,16 @@
+
+<h2>Inscription</h2>
+<form (ngSubmit)="register()">
+  <input type="text" [(ngModel)]="nom" name="nom" placeholder="Nom" required />
+  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+  <input type="password" [(ngModel)]="motDePasse" name="motDePasse" placeholder="Mot de passe" required />
+  
+  <select [(ngModel)]="role" name="role" required>
+    <option value="Employé">Employé</option>
+    <option value="Fournisseur">Fournisseur</option>
+  </select>
+  
+  <button type="submit">S'inscrire</button>
+</form>
+
+

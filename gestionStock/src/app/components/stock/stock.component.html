@@ -18,9 +18,10 @@
         <td>{{ s.quantite }}</td>
         <td>{{ s.seuilAlerte }}</td>
         <td>
-          <span *ngIf="isStockBas(s)" style="color: red; font-weight: bold;">
-            ⚠️ Stock bas
-          </span>
+           <span *ngIf="isStockBas(s)" style="color: red; font-weight: bold;">
+    ⚠️ Stock bas
+    <button (click)="envoyerAlerte(s)">Envoyer alerte</button>
+  </span>
           <span *ngIf="!isStockBas(s)" style="color: green;">
             ✅ OK
           </span>

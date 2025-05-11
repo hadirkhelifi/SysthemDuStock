@@ -51,6 +51,11 @@ public class StockServiceImpl implements StockService {
     public List<Stock> getStocksEnAlerte() {
         return stockRepository.findStocksEnAlerte();
     }
+    @Override
+    public Stock getById(Long id) {
+        return stockRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("❌ Stock avec ID " + id + " non trouvé"));
+    }
 
 
 }

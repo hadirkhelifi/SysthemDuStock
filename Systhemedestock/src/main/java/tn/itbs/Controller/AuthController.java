@@ -16,6 +16,7 @@ import tn.itbs.Repository.UtilisateurRepository;
 import tn.itbs.Service.JwtService;
 import tn.itbs.dto.AuthRequest;
 import tn.itbs.dto.AuthResponse;
+//import tn.itbs.payload.AuthResponse;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -40,16 +41,23 @@ public class AuthController {
         }
 
         user.setMotDePasse(passwordEncoder.encode(user.getMotDePasse()));
+
+        // Assure-toi que le rôle est défini (ex : FOURNISSEUR par défaut)
+        if (user.getRole() == null || user.getRole().isEmpty()) {
+            user.setRole("FOURNISSEUR");
+        }
+
         utilisateurRepository.save(user);
         return ResponseEntity.ok("Utilisateur enregistré avec succès !");
     }
+
    
 
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest request) {
         try {
-            // Authentification
+            // Authentifier l'utilisateur
             authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                     request.getEmail(),
@@ -61,17 +69,20 @@ public class AuthController {
             Utilisateur user = utilisateurRepository.findByEmail(request.getEmail())
                     .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
 
-            // Générer le token
+            // Récupérer le rôle (directement depuis le champ `role`)
+            String role = user.getRole();
+
+            // Générer le JWT
             String jwtToken = jwtService.generateToken(user);
 
-            // Retourner le token
-            return ResponseEntity.ok(new AuthResponse(jwtToken));
+            // Retourner token + rôle
+            return ResponseEntity.ok(new AuthResponse(jwtToken, role));
 
         } catch (AuthenticationException e) {
             return ResponseEntity.status(401).body("Email ou mot de passe invalide !");
         }
     }
-    
+
     
     @GetMapping("/api/test")
     public ResponseEntity<String> test() {

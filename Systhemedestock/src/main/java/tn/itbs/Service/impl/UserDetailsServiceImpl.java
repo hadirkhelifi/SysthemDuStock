@@ -11,13 +11,14 @@ import tn.itbs.Repository.UtilisateurRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-	@Autowired
+    @Autowired
     private UtilisateurRepository utilisateurRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Utilisateur utilisateur = utilisateurRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"));
-        return new UserDetailsImpl(utilisateur);
+        
+        return new UserDetailsImpl(utilisateur); // Assurez-vous que UserDetailsImpl est bien défini.
     }
 }
