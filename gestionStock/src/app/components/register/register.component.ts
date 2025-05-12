@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
 
-  templateUrl: './register.component.html'
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'] // Si vous avez un fichier CSS spécifique
 })
 export class RegisterComponent {
   nom = '';

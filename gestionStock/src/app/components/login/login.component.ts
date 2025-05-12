@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'] // Si vous avez un fichier CSS spécifique
 })
 export class LoginComponent {
   email = '';
@@ -36,7 +37,7 @@ export class LoginComponent {
     this.router.navigate(['AdminHome']);
     break;
   case 'EMPLOYE':
-    this.router.navigate(['stock']);
+    this.router.navigate(['EmployeHome']);
     break;
   case 'FOURNISSEUR':
     this.router.navigate(['FornisseurHome']);

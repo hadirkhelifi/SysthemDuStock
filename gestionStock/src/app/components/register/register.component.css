@@ -1,0 +1,79 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+body {
+  background: #f3f4f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.register-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.register-form .input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f9fafb;
+  transition: border-color 0.3s;
+}
+
+.register-form .input-group:focus-within {
+  border-color: #28a745;
+}
+
+.icon {
+  margin-right: 10px;
+  color: #777;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+}
+
+select {
+  appearance: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+button[type="submit"] {
+  background-color: #282ea7;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #213e88;
+}

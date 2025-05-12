@@ -1,16 +1,26 @@
-
-<h2>Inscription</h2>
-<form (ngSubmit)="register()">
-  <input type="text" [(ngModel)]="nom" name="nom" placeholder="Nom" required />
-  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
-  <input type="password" [(ngModel)]="motDePasse" name="motDePasse" placeholder="Mot de passe" required />
-  
-  <select [(ngModel)]="role" name="role" required>
-    <option value="Employé">Employé</option>
-    <option value="Fournisseur">Fournisseur</option>
-  </select>
-  
-  <button type="submit">S'inscrire</button>
-</form>
-
-
+<div class="register-container">
+  <h2><i class="fas fa-user-plus"></i> Inscription</h2>
+  <form (ngSubmit)="register()" class="register-form">
+    <div class="input-group">
+      <i class="fas fa-user icon"></i>
+      <input type="text" [(ngModel)]="nom" name="nom" placeholder="Nom" required />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-envelope icon"></i>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-lock icon"></i>
+      <input type="password" [(ngModel)]="motDePasse" name="motDePasse" placeholder="Mot de passe" required />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-user-tag icon"></i>
+      <select [(ngModel)]="role" name="role" required>
+        <option value="" disabled selected hidden>Choisissez un rôle</option>
+        <option value="Employé">Employé</option>
+        <option value="Fournisseur">Fournisseur</option>
+      </select>
+    </div>
+    <button type="submit"><i class="fas fa-user-check"></i> S'inscrire</button>
+  </form>
+</div>
